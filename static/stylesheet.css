@@ -3,11 +3,16 @@ footer {
   height: 100px;
   bottom: 0;
   width: 100%;
-
+  background-color: white;
 }
 
-.btn{
-  margin-right: 5px;
+.post_box{
+  margin-right: 50px;
+  margin-left:15px;
+}
+
+.icon-bar{
+  background-color: #05386B
 }
 
 .navbar-default{
@@ -21,15 +26,19 @@ footer {
     border-radius: 0px;
 }
 
-.nav-text:hover,.navbar-toggle:hover,.send:hover,.navbar-toggle:active,.navbar-toggle:focus,.dropdown-menu li:hover{
+.nav-text:hover,.send:hover,.dropdown-menu li:hover{
   background-color: #abedc9 ;
+}
+
+.nav-create_channel{
+  color:#05386B;
+  font-size: 20px;
 }
 
 .nav-hedtext{
   color:#05386B;
   font-size: 20px;
 }
-
 
 .nav-text
 {
@@ -42,13 +51,12 @@ footer {
   margin:5px;
 }
 
-
 .navbar-form{
   margin:0px;
   border-width:0px;
 }
 
-.row{
+.chat-row{
   margin-bottom: 100px;
 }
 

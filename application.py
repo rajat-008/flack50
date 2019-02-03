@@ -18,7 +18,7 @@ class message:
 
 def create_channel(name):
 
-    
+
     if name in channels:
         return False
     else:

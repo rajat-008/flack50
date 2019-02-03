@@ -41,14 +41,14 @@ if(!localStorage.name){
         </ul>
       </li>
       <li class="dropdown nav-text">
-        <a class="dropdown-toggle nav-text" data-toggle="dropdown" href="#"><span class="nav-text">New Chatroom
+        <a class="dropdown-toggle " data-toggle="dropdown" href="#"><span class="nav-text">New Chatroom
         <span class="caret"></span></span ></a>
         <div >
         <ul class="dropdown-menu nav-part" style="padding: 15px; padding-bottom: 10px;">
           <form class="navbar-form navbar-right" action="#" method="post">
               <div  class="form-group">
                 <input type="text" class="form-control" placeholder="Room name" name="room">
-                <button type="submit" class="btn btn-default nav-text">Create</button>
+                <button type="submit" class="btn btn-default nav-create_channel">Create</button>
               </div>
 
 
@@ -65,21 +65,25 @@ if(!localStorage.name){
   <br>
   <br>
   <br>
-  <div class="row">
+  <div class="row chat-row">
     <div class="col-lg-3 col-sm-1"></div>
 
   <ul class="chat col-lg-6 col-sm-10">
- <li class="chat__bubble chat__bubble--rcvd chat__bubble--stop">What are you up to?</li>
+ <li class="chat__bubble chat__bubble--rcvd ">What are you up to?</li>
  <li class="chat__bubble chat__bubble--sent">Not much.</li>
  <li class="chat__bubble chat__bubble--sent">Just writing some CSS.</li>
  <li class="chat__bubble chat__bubble--sent">I just LOVE writing CSS.</li>
- <li class="chat__bubble chat__bubble--sent chat__bubble--stop">Do you?</li>
+ <li class="chat__bubble chat__bubble--sent ">Do you?</li>
  <li class="chat__bubble chat__bubble--rcvd">Yeah!</li>
  <li class="chat__bubble chat__bubble--rcvd">It's super fun.</li>
- <li class="chat__bubble chat__bubble--rcvd chat__bubble--stop">... SUPER fun.</li>
+ <li class="chat__bubble chat__bubble--rcvd ">... SUPER fun.</li>
  {% for msgs in channels["main"] %}
- <li class="chat__bubble chat__bubble--rcvd chat__bubble--stop"><b>{{msgs.name}}</b><br>{{msgs.msg}}<br><{{msgs.date_time}}</li>
+ <li class="chat__bubble chat__bubble--rcvd "><b>{{msgs.name}}</b><br>{{msgs.msg}}<br>{{msgs.date_time}}</li>
  {% endfor %}
+ <li class="chat__bubble chat__bubble--sent">Not much.</li>
+ <li class="chat__bubble chat__bubble--sent">Just writing some CSS.</li>
+ <li class="chat__bubble chat__bubble--sent">I just LOVE writing CSS.</li>
+ <li class="chat__bubble chat__bubble--sent ">Do you?</li>
 </ul>
 
 <div class="col-lg-3 col-sm-1"></div>
@@ -95,20 +99,15 @@ if(!localStorage.name){
         <input type="text" class="form-control" placeholder="Message" name="msg_input">
         <span class="input-group-btn">
           <button class="btn btn-default send" type="button">Send</button>
+
         </span>
-      
+
+
     </div>
+    </form>
     <div class="col-lg-3 col-sm-2"></div>
   </div>
-
-  </form>
-
-
   </footer>
-
-
-  </footer>
-
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
