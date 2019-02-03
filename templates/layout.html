@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  footer {
+    position: fixed;
+    height: 100px;
+    bottom: 0;
+    width: 100%;
+  }
+  .speech-bubble {
+  	position: relative;
+  	background: #abedc9;
+  	border-radius: .4em;
+  }
+
+  .speech-bubble:after {
+  	content: '';
+  	position: absolute;
+  	left: 0;
+  	top: 50%;
+  	width: 0;
+  	height: 0;
+  	border: 19px solid transparent;
+  	border-right-color: #abedc9;
+  	border-left: 0;
+  	border-top: 0;
+  	margin-top: -9.5px;
+  	margin-left: -19px;
+  }
+
+  </style>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+</head>
+<body>
+  <div class="container-fluid">
+
+    <div >
+      <div class="col-lg-3"></div>
+      <div class="speech-bubble col-lg-3">
+    <div>
+      <p>This one adds a right triangle on the left, flush at the top by using .tri-right and .left-top to specify the location.</p>
+    </div>
+  </div>
+    </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</div>
+</body>
+</html>

@@ -1,0 +1,101 @@
+footer {
+  position: fixed;
+  height: 100px;
+  bottom: 0;
+  width: 100%;
+
+}
+
+.btn{
+  margin-right: 5px;
+}
+
+.navbar-default{
+    background-color: #5CDB95;
+    border-color:#5CDB95;
+    border-style:solid;
+    border-width:thin medium;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    border-radius: 0px;
+}
+
+.nav-text:hover,.navbar-toggle:hover,.send:hover,.navbar-toggle:active,.navbar-toggle:focus,.dropdown-menu li:hover{
+  background-color: #abedc9 ;
+}
+
+.nav-hedtext{
+  color:#05386B;
+  font-size: 20px;
+}
+
+
+.nav-text
+{
+  color:#05386B;
+  font-size: 20px;
+}
+
+.dropdown-menu
+{
+  margin:5px;
+}
+
+
+.navbar-form{
+  margin:0px;
+  border-width:0px;
+}
+
+.row{
+  margin-bottom: 100px;
+}
+
+.send,.send:focus{
+  background-color:#5CDB95;
+  color:#05386B;
+}
+
+//chat class isnspired from:https://stackoverflow.com/a/42258090
+.chat {
+  list-style-type: none;
+
+  border-bottom-width: 50px;
+  border-style: solid;
+}
+
+.chat__bubble {
+  list-style: none;
+  margin-bottom: 3px;
+  padding: 5px 10px;
+  clear: both;
+  border-radius: 10px 10px 2px 2px ;
+}
+
+.chat__bubble--rcvd {
+  background: #d9f5ff;
+  color: #05386b;
+  float: left;
+  border-bottom-right-radius: 10px;
+}
+
+.chat__bubble--sent {
+  background: #8ee4af;
+  color: #05386B;
+  float: right;
+  border-bottom-left-radius: 10px;
+}
+
+.chat__bubble--sent + .chat__bubble--sent {
+  border-top-right-radius: 2px;
+}
+
+.chat__bubble--rcvd + .chat__bubble--rcvd {
+  border-top-left-radius: 2px;
+}
+
+.chat__bubble:active
+{
+  background-color: #eeeeff;
+}
