@@ -82,3 +82,7 @@ def make_json(channel):
         json_form["msgs"].append(new)
     json_form["channel"]=channel
     return json_form
+
+
+if __name__ == '__main__':
+    app.run()
