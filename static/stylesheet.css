@@ -6,9 +6,8 @@ footer {
   background-color: white;
 }
 
-.post_box{
-  margin-right: 50px;
-  margin-left:15px;
+.post_box,.send-row{
+  max-width: 100%;
 }
 
 .icon-bar{
@@ -33,6 +32,7 @@ footer {
 .nav-create_channel{
   color:#05386B;
   font-size: 20px;
+  border-radius: 0;
 }
 
 .nav-hedtext{
@@ -74,6 +74,7 @@ footer {
 }
 
 .chat__bubble {
+  max-width: 75%;
   list-style: none;
   margin-bottom: 3px;
   padding: 5px 10px;
@@ -89,7 +90,7 @@ footer {
 }
 
 .chat__bubble--sent {
-  background: #8ee4af;
+  background: #c1f0d3;
   color: #05386B;
   float: right;
   border-bottom-left-radius: 10px;

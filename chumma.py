@@ -1,28 +1,26 @@
 from collections import deque
-
+from datetime import datetime
+channels={"main":deque(maxlen=100)}
 class message:
     def __init__(self,name,date_time,msg):
         self.name=name
         self.date_time=date_time
         self.msg=msg
-    def display(self):
-        print(self.name)
 
+def post_msg(msg,channel):
+    channels[channel].append(msg)
 
-d=deque(maxlen=5)
-for i in range(5):
-    dumm=message("rajat",i,"hello"+str(i))
-    d.append(dumm)
-print("Old:")
-for item in d:
-    print(item.name)
-    print(item.msg)
-    print(item.date_time)
+def make_json(channel_msgs,channel):
+    json_form=dict()
+    json_form[channel]=list()
+    for all in channel_msgs:
+        new=dict()
+        new["name"]=all.name
+        new["date_time"]=all.date_time
+        new["msg"]=all.msg
+        json_form[channel].append(new)
+    return json_form
 
-chumm=message("vish",100,"bye")
-d.append(chumm)
-print("new:")
-for item in d:
-    print(item.name)
-    print(item.msg)
-    print(item.date_time)
+first=message("rajat",datetime.now(),"Hello")
+post_msg(first,"main")
+print(make_json(channels["main"],"main"))

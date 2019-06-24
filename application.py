@@ -8,7 +8,7 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
 socketio = SocketIO(app)
 
-channels={"main":deque(maxlen=100)}
+channels={"main":deque(maxlen=100),"new":deque(maxlen=100)}
 
 class message:
     def __init__(self,name,date_time,msg):
@@ -17,8 +17,6 @@ class message:
         self.msg=msg
 
 def create_channel(name):
-
-
     if name in channels:
         return False
     else:
@@ -29,66 +27,6 @@ def create_channel(name):
 def post_msg(msg,channel):
     channels[channel].append(msg)
 
-first= message("rajat",datetime.now(),"hi there!! test works")
-post_msg(first,"main")
-first= message("rajat",datetime.now(),"hi there!! test works")
-post_msg(first,"main")
-first= message("rajat",datetime.now(),"hi there!! test works")
-post_msg(first,"main")
-first= message("rajat",datetime.now(),"hi there!! test works")
-post_msg(first,"main")
-first= message("rajat",datetime.now(),"hi there!! test works")
-post_msg(first,"main")
-first= message("rajat",datetime.now(),"hi there!! test works")
-post_msg(first,"main")
-first= message("rajat",datetime.now(),"hi there!! test works")
-post_msg(first,"main")
-first= message("rajat",datetime.now(),"hi there!! test works")
-post_msg(first,"main")
-first= message("rajat",datetime.now(),"hi there!! test works")
-post_msg(first,"main")
-first= message("rajat",datetime.now(),"hi there!! test works")
-post_msg(first,"main")
-first= message("rajat",datetime.now(),"hi there!! test works")
-post_msg(first,"main")
-first= message("rajat",datetime.now(),"hi there!! test works")
-post_msg(first,"main")
-first= message("rajat",datetime.now(),"hi there!! test works")
-post_msg(first,"main")
-first= message("rajat",datetime.now(),"hi there!! test works")
-post_msg(first,"main")
-first= message("rajat",datetime.now(),"hi there!! test works")
-post_msg(first,"main")
-first= message("rajat",datetime.now(),"hi there!! test works")
-post_msg(first,"main")
-first= message("rajat",datetime.now(),"hi there!! test works")
-first= message("rajat",datetime.now(),"hi there!! test works")
-post_msg(first,"main")
-first= message("rajat",datetime.now(),"hi there!! test works")
-post_msg(first,"main")
-first= message("rajat",datetime.now(),"hi there!! test works")
-post_msg(first,"main")
-first= message("rajat",datetime.now(),"hi there!! test works")
-post_msg(first,"main")
-first= message("rajat",datetime.now(),"hi there!! test works")
-post_msg(first,"main")
-first= message("rajat",datetime.now(),"hi there!! test works")
-post_msg(first,"main")
-first= message("rajat",datetime.now(),"hi there!! test works")
-post_msg(first,"main")
-first= message("rajat",datetime.now(),"hi there!! test works")
-post_msg(first,"main")
-first= message("rajat",datetime.now(),"hi there!! test works")
-post_msg(first,"main")
-first= message("rajat",datetime.now(),"hi there!! test works")
-post_msg(first,"main")
-first= message("rajat",datetime.now(),"hi there!! test works")
-post_msg(first,"main")
-first= message("rajat",datetime.now(),"hi there!! test works")
-post_msg(first,"main")
-first= message("rajat",datetime.now(),"hi there!! test works")
-post_msg(first,"main")
-
 
 @app.route("/")
 def index():
@@ -98,14 +36,45 @@ def index():
 def chat():
     return render_template("chatroom.html",channels=channels)
 
-@app.route("/")
-def retjson():
-    return make_json(channels["main"])
+@app.route("/channel/<string:channel>")
+def get_msgs(channel):
+    if channel not in channels:
+        return jsonify({"channel_exist":False})
+    result=make_json(channel)
+    result["channel_exist"]=True
+    return jsonify(result)
 
-def make_json(channel_msgs):
-    json_form=str()
-    json_form='{"msgs":'
-    for all in channel_msgs:
-        json_form+='{"name":'+str(all.name)+',"msg":'+str(all.msg)+',"date":'+str(all.date_time)+'},'
-    json_form=json_form+'}'
-    return jsonify(json_form)
+@socketio.on("create new channel")
+def create_channel(data):
+    channel=data["new_channel"]
+    if channel in channels:
+        emit("channel exists",{"channel_created":False},broadcast=False)
+    else:
+        channels[channel]=deque(maxlen=100)
+        emit("Channel created",{"new_channel":channel},broadcast=True)
+
+@socketio.on("send new msg")
+def send_msg(data):
+    date_time=datetime.now().strftime("%d/%m/%y  %M:%S")
+    msg=message(data["name"],date_time,data["new_msg"])
+    post_msg(msg,data["channel"])
+    emit("new msg",{"channel":data["channel"],"name":data["name"],"new_msg":data["new_msg"],"date_time":date_time},broadcast=True)
+
+@socketio.on("get msgs")
+def send_msgs(data):
+    channel=data["channel"]
+    msgs=make_json(channel)
+    emit("channel msgs",msgs)
+
+
+def make_json(channel):
+    json_form=dict()
+    json_form["msgs"]=list()
+    for all in channels[channel]:
+        new=dict()
+        new["name"]=all.name
+        new["date_time"]=all.date_time
+        new["msg"]=all.msg
+        json_form["msgs"].append(new)
+    json_form["channel"]=channel
+    return json_form
