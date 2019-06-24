@@ -44,6 +44,10 @@ def get_msgs(channel):
     result["channel_exist"]=True
     return jsonify(result)
 
+@app.route("/favicon.ico")
+def chumma():
+    return
+
 @socketio.on("create new channel")
 def create_channel(data):
     channel=data["new_channel"]
