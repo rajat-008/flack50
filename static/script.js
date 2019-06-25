@@ -80,11 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 'new_msg': new_msg,
                 'channel': channel
             });
-            console.log({
-                'name': localStorage.name,
-                'new_msg': new_msg,
-                'channel': channel
-            })
+
             return false;
         };
     });
