@@ -24,7 +24,7 @@ function get_msgs(channel) {
     request.onload = () => {
         const data = JSON.parse(request.responseText);
         if (data.channel_exist) {
-            alert(channel+" Entered");
+
             localStorage.current_channel = channel;
             var i;
             var content="";
@@ -37,7 +37,7 @@ function get_msgs(channel) {
                 }
             }
             document.querySelector('.chat').innerHTML=content;
-
+            alert(channel+" Entered");
 
         }
         else {
