@@ -34,16 +34,16 @@ if(!localStorage.name){
     <div class="collapse navbar-collapse" id="menu">
     <ul class="nav navbar-nav navbar" >
       <li class="dropdown nav-text">
-        <a class="dropdown-toggle nav-text" data-toggle="dropdown" href="#"><span class="nav-text">Chatroom Navigation
+        <a class="dropdown-toggle nav-text" data-toggle="dropdown" href=""><span class="nav-text">Chatroom Navigation
         <span class="caret"></span></span></a>
         <ul class="dropdown-menu" id="channel_nav" border="5px">
           {% for channel in channels %}
-          <li class="nav-text"><a class="nav-text channels" href="#" id={{channel}} onclick="get_msgs('{{channel}}')">{{ channel }}</a></li>
+          <li class="nav-text"><a class="nav-text channels" href="" id={{channel}} onclick="get_msgs('{{channel}}')">{{ channel }}</a></li>
           {% endfor %}
         </ul>
       </li>
       <li class="dropdown nav-text">
-        <a class="dropdown-toggle " data-toggle="dropdown" href="#"><span class="nav-text">New Chatroom
+        <a class="dropdown-toggle " data-toggle="dropdown" href=""><span class="nav-text">New Chatroom
         <span class="caret"></span></span ></a>
         <div >
         <ul class="dropdown-menu nav-part" style="padding: 15px; padding-bottom: 10px;">
@@ -60,7 +60,7 @@ if(!localStorage.name){
       </div>
       </li>
 
-      
+
     </ul>
   </div>
   </div>

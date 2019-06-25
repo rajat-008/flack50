@@ -38,6 +38,7 @@ function get_msgs(channel) {
             }
             document.querySelector('.chat').innerHTML=content;
             alert(channel+" Entered");
+            console.log(content);
 
         }
         else {
