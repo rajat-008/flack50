@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 'new_msg': new_msg,
                 'channel': channel
             });
-
+            document.querySelector('#new_msg').value='';
             return false;
         };
     });

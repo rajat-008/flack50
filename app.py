@@ -1,6 +1,6 @@
 import os
 from collections import deque
-from flask import Flask,render_template,jsonify
+from flask import Flask,render_template,jsonify, send_from_directory
 from flask_socketio import SocketIO, emit
 from datetime import datetime
 
@@ -44,9 +44,10 @@ def get_msgs(channel):
     result["channel_exist"]=True
     return jsonify(result)
 
-@app.route("/favicon.ico")
-def chumma():
-    return
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                          'favicon.ico',mimetype='image/vnd.microsoft.icon')
 
 @socketio.on("create new channel")
 def create_channel(data):

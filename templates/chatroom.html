@@ -38,7 +38,7 @@ if(!localStorage.name){
         <span class="caret"></span></span></a>
         <ul class="dropdown-menu" id="channel_nav" border="5px">
           {% for channel in channels %}
-          <li class="nav-text"><a class="nav-text channels" href="" id={{channel}} onclick="get_msgs('{{channel}}')">{{ channel }}</a></li>
+          <li class="nav-text"><a class="nav-text channels" href="" id={{channel}} onclick=" return get_msgs('{{channel}}')">{{ channel }}</a></li>
           {% endfor %}
         </ul>
       </li>
