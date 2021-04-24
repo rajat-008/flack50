@@ -4,7 +4,7 @@ Flack50 is a chat application served over the web, that was undertaken as a part
 
 ## Dev Stack
 
-The backend of the app is built in Flask. SocketIO is made use of to perform real-time communication betwee client and server. 
+The backend of the app is built in Flask. SocketIO is made use of to perform real-time communication between client and server. 
 
 ## Instructions to run the app
 
